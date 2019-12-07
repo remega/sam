@@ -8,7 +8,7 @@ import numpy as np
 from config import *
 from utilities import preprocess_images, preprocess_maps, preprocess_fixmaps, postprocess_predictions
 from models import sam_vgg, sam_resnet, kl_divergence, correlation_coefficient, nss
-
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
 
 def generator(b_s, phase_gen='train'):
     if phase_gen == 'train':
