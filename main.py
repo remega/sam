@@ -86,14 +86,15 @@ if __name__ == '__main__':
 
         elif phase == "test":
             # Output Folder Path
-            output_folder = './predictions/LEDOV/'
+            # output_folder = './predictions/LEDOV/'
+            output_folder = './predictions/DIEM/'
             if not os.path.isdir(output_folder):
                 os.mkdir(output_folder)
             #
             # if len(sys.argv) < 2:
             #     raise SyntaxError
-            imgs_test_path = './LEDOV-IMG/'
-
+            #imgs_test_path = './LEDOV-IMG/'
+            imgs_test_path = './DIEM-img/'
             file_names = [f for f in os.listdir(imgs_test_path) if f.endswith(('.jpg', '.jpeg', '.png'))]
             file_names.sort()
             nb_imgs_test = len(file_names)
