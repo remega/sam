@@ -86,11 +86,13 @@ if __name__ == '__main__':
 
         elif phase == "test":
             # Output Folder Path
-            output_folder = 'predictions/'
-
-            if len(sys.argv) < 2:
-                raise SyntaxError
-            imgs_test_path = sys.argv[2]
+            output_folder = './predictions/LEDOV/'
+            if not os.path.isdir(output_folder):
+                os.mkdir(output_folder)
+            #
+            # if len(sys.argv) < 2:
+            #     raise SyntaxError
+            imgs_test_path = './LEDOV-IMG/'
 
             file_names = [f for f in os.listdir(imgs_test_path) if f.endswith(('.jpg', '.jpeg', '.png'))]
             file_names.sort()
@@ -102,10 +104,10 @@ if __name__ == '__main__':
 
             if version == 0:
                 print("Loading SAM-VGG weights")
-                m.load_weights('weights/sam-vgg_salicon_weights.pkl')
+                m.load_weights('./weights/sam-vgg_salicon_weights.pkl')
             elif version == 1:
                 print("Loading SAM-ResNet weights")
-                m.load_weights('weights/sam-resnet_salicon_weights.pkl')
+                m.load_weights('./weights/sam-resnet_salicon2017_weights.pkl')
 
             print("Predicting saliency maps for " + imgs_test_path)
             predictions = m.predict_generator(generator_test(b_s=b_s, imgs_test_path=imgs_test_path), nb_imgs_test)[0]
